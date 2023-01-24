@@ -161,3 +161,6 @@ cython_debug/
 
 # file created by Mac OS X
 .DS_Store
+
+# project files
+images/
