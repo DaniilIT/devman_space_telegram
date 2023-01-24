@@ -17,7 +17,7 @@ def download_image(url, file_path):
         f.write(response.content)
 
 
-def main():
+def fetch_spacex_last_launch():
     Path("./images").mkdir(exist_ok=True)
 
     try:
@@ -32,6 +32,10 @@ def main():
                 download_image(image_url, image_file_path)
             except requests.exceptions.HTTPError:
                 print("Что-то пошло не так")
+
+
+def main():
+    fetch_spacex_last_launch()
 
 
 if __name__ == '__main__':
