@@ -1,4 +1,6 @@
+import os
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 import requests
 
@@ -17,11 +19,13 @@ def download_image(url, file_path):
         f.write(response.content)
 
 
-def fetch_spacex_last_launch():
+def fetch_spacex_last_launch(flight_id):
+    """Функция запрашивает через API SpaceX ссылки на изображения и скачивает эти изображения.
+    """
     Path("./images").mkdir(exist_ok=True)
 
     try:
-        response = requests.get(f'{SPACEX_URL}/v5/launches/{FLIGHT_ID}')
+        response = requests.get(f'{SPACEX_URL}/v5/launches/{flight_id}')
         response.raise_for_status()
     except requests.exceptions.HTTPError:
         print("Что-то пошло не так")
@@ -33,9 +37,18 @@ def fetch_spacex_last_launch():
             except requests.exceptions.HTTPError:
                 print("Что-то пошло не так")
 
+def get_file_format(url):
+    """Функция возвращает формат файла по адресу.
+    """
+    file_path = unquote(urlparse(url).path)
+    file_format = os.path.splitext(file_path)[-1]
+    return file_format
+
+
 
 def main():
-    fetch_spacex_last_launch()
+    # fetch_spacex_last_launch(FLIGHT_ID)
+    print(get_file_format("https://example.com/txt/hello%20world.txt?v=9#python"))
 
 
 if __name__ == '__main__':
