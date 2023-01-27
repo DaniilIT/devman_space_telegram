@@ -2,9 +2,9 @@ import argparse
 
 from dotenv import dotenv_values
 
-from actions_with_API_space_images.fetch_spacex_images import *
-from actions_with_API_space_images.fetch_nasa_apod_images import *
-from actions_with_API_space_images.fetch_nasa_epic_images import *
+from actions_with_API.fetch_spacex_images import *
+from actions_with_API.fetch_nasa_apod_images import *
+from actions_with_API.fetch_nasa_epic_images import *
 
 
 NASA_IMAGES_COUNT = 5
