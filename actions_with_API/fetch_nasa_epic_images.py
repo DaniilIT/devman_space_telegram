@@ -1,7 +1,6 @@
 import datetime
 from sys import stderr
 
-import requests
 from dotenv import dotenv_values
 import requests
 from tqdm import tqdm
@@ -36,5 +35,5 @@ def fetch_nasa_epic_images(token):
 
 
 if __name__ == '__main__':
-    nasa_token = dotenv_values("../.env")['NASA_TOKEN']
+    nasa_token = dotenv_values(".env")['NASA_TOKEN']
     fetch_nasa_epic_images(nasa_token)

@@ -9,6 +9,13 @@ from dotenv import dotenv_values
 CHANNEL_ID = "@MyKosmos_DaniilIt"
 
 
+def publich_image_to_telegram(image):
+    telegram_token = dotenv_values(".env")['TELEGRAM_TOKEN']
+    bot = telegram.Bot(token=telegram_token)
+
+    bot.send_document(chat_id=CHANNEL_ID, document=open(f"./images/{image}", 'rb'))
+
+
 def create_parser():
     """Функция производит синтаксический анализ командной строки
     """
@@ -22,16 +29,9 @@ def create_parser():
     return parser
 
 
-def main():
-    telegram_token = dotenv_values(".env")['TELEGRAM_TOKEN']
-    bot = telegram.Bot(token=telegram_token)
-
+if __name__ == '__main__':
     args = create_parser().parse_args()
     if not args.image:
         args.image = random.choice(os.listdir("./images"))
 
-    bot.send_document(chat_id=CHANNEL_ID, document=open(f"./images/{args.image}", 'rb'))
-
-
-if __name__ == '__main__':
-    main()
+    publich_image_to_telegram()
