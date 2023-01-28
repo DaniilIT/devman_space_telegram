@@ -37,7 +37,6 @@ def main():
         random.shuffle(images)
 
         for image in images:
-            bot.send_message(text="Привет всем! Вот новая фотография", chat_id=CHANNEL_ID)
             bot.send_document(chat_id=CHANNEL_ID, document=open(f"./images/{image}", 'rb'))
             time.sleep(publish_delay)
 
