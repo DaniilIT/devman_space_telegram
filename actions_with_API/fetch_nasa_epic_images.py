@@ -3,7 +3,6 @@ from sys import stderr
 
 from dotenv import dotenv_values
 import requests
-from tqdm import tqdm
 
 from actions_with_images import download_image
 
@@ -23,12 +22,12 @@ def fetch_nasa_epic_images(token):
     except requests.exceptions.HTTPError:
         stderr.write(f"Не удалось сделать запрос к API NASA EPIC.\n")
     else:
-        for image_number, image in tqdm(enumerate(response.json())):
+        for image_number, image in enumerate(response.json()):
             image_name = image['image']
             image_date = datetime.datetime.fromisoformat(image['date'])
             image_url = f"{NASA_URL}/EPIC/archive/natural/{image_date.strftime('%Y/%m/%d')}/png/{image_name}.png"
             try:
-                image_name = f"nasa_epic_{image_number}.png"
+                image_name = f"nasa_epic_{image_number + 1}.png"
                 download_image(image_url, image_name, token=token)
             except requests.exceptions.HTTPError:
                 stderr.write(f"Не удалось скачать фотографию по адресу {image_url}.\n")

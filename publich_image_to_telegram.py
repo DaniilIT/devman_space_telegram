@@ -34,4 +34,4 @@ if __name__ == '__main__':
     if not args.image:
         args.image = random.choice(os.listdir("./images"))
 
-    publich_image_to_telegram()
+    publich_image_to_telegram(args.image)

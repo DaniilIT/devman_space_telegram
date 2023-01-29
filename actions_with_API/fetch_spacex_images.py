@@ -2,13 +2,11 @@ import argparse
 from sys import stderr
 
 import requests
-from tqdm import tqdm
 
 from actions_with_images import download_image
 
 
 SPACEX_URL = "https://api.spacexdata.com"
-# SPACEX_LAUNCH_ID = "5eb87d47ffd86e000604b38a"
 
 
 def fetch_spacex_images(launch_id):
@@ -20,9 +18,9 @@ def fetch_spacex_images(launch_id):
     except requests.exceptions.HTTPError:
         stderr.write(f"Не удалось сделать запрос к API SpaceX.\n")
     else:
-        for image_number, image_url in tqdm(enumerate(response.json()['links']['flickr']['original'])):
+        for image_number, image_url in enumerate(response.json()['links']['flickr']['original']):
             try:
-                image_name = f"spacex_{image_number}.jpg"
+                image_name = f"spacex_{image_number + 1}.jpg"
                 download_image(image_url, image_name)
             except requests.exceptions.HTTPError:
                 stderr.write(f"Не удалось скачать фотографию по адресу {image_url}.\n")

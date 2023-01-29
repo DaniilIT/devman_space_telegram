@@ -14,8 +14,8 @@
 Все фотографии скачиваются в папку `images/`.
 
 ### - publich_image_to_telegram
-С помощью бота Telegram - BotFather, публикует одну фотографию в Telegram - канал,
-в котором бот является администратором.
+С помощью бота Telegram - BotFather, публикует одну фотографию в Telegram - канал
+[@MyKosmos_DaniilIt](https://t.me/MyKosmos_DaniilIt), в котором бот является администратором.
 
 ### - auto_publich_image_to_telegram
 Скрипт перемешивает в случайном порядке фотографии из папки `images/`
@@ -39,7 +39,6 @@ echo "TELEGRAM_TOKEN=<your botfather token>" >> .env
 
 - python-dotenv >= 0.21.1
 - requests >= 2.28.2
-- tqdm >= 4.64.1
 - python-telegram-bot == 13.0
 
 Python3 должен быть уже установлен.
@@ -83,7 +82,7 @@ python actions_with_API/fetch_nasa_epic_images.py
 python publich_image_to_telegram.py
 ```
 
-Вы также можете указать фотографию для публикации, например `--image nasa_epic_0.png`,
+Вы также можете указать фотографию для публикации, например `--image nasa_epic_1.png`,
 по умолчанию публикуется случайная фотография.
 
 ### - auto_publich_image_to_telegram

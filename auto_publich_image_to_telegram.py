@@ -21,7 +21,7 @@ def create_parser():
     return parser
 
 
-def main():
+def auto_publich_image_to_telegram():
     args = create_parser().parse_args()
     publish_delay = args.publish_delay * 3600
 
@@ -35,4 +35,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    auto_publich_image_to_telegram()
