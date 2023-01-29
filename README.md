@@ -1,28 +1,31 @@
 # Космический Телеграм
 
-Программа разделена на несколько скриптов:
+Программа разделена на несколько скриптов: 
+ 
+### - fetch_spacex_images
+С помощью API SpaceX скачивает фотографии с одного запуска.
 
-### - fetch_images
+### - fetch_nasa_apod_images 
+с помощью API NASA скачивает астрономические фотографии (APOD).
 
-С помощью API SpaceX скачивает фотографии с одного запуска, 
-с помощью API NASA скачивает астрономические фотографии (APOD) и фотографии Земли (EPIC).
+### - fetch_nasa_epic_images
+с помощью API NASA скачивает фотографии Земли (EPIC).
 
-Чтобы скачать фотографии с одного конкретного ресурса, можно запустить один из скриптов в папке `actions_with_API/`.
 Все фотографии скачиваются в папку `images/`.
 
 ### - publich_image_to_telegram
-
-С помощью бота в Telegram - BotFather, публикует одну фотографию в Telegram-канал, в котором бот является администратором.
+С помощью бота Telegram - BotFather, публикует одну фотографию в Telegram - канал,
+в котором бот является администратором.
 
 ### - auto_publich_image_to_telegram
-
 Скрипт перемешивает в случайном порядке фотографии из папки `images/`
-и раз в несколько часов публикует по одной в Telegram-канал.
+и раз в несколько часов публикует по одной в Telegram - канал.
 
 
 ## Как установить
 
-Чтобы использовать API NASA, вам потребуется токен доступа, получите его [здесь](https://api.nasa.gov/). \
+Чтобы использовать API NASA, вам потребуется токен доступа, получите его [здесь](https://api.nasa.gov/).
+
 Чтобы использовать BotFather, вам тоже потребуется токен доступа, получите его [здесь](https://telegram.me/BotFather).
 
 Вставьте токены в файл .env, выполнив команды:
@@ -49,15 +52,29 @@ pip install -r requirements.txt
 
 ## Запуск
 
-### - fetch_images
+### - fetch_spacex_images
 
 Для запуска скрипта наберите команду:
 ```Python
-python fetch_images.py
+python actions_with_API/fetch_spacex_images.py
 ```
 
 Вы также можете указать id конкретного запуска, например `--launch_id 5eb87d47ffd86e000604b38a`,
 по умолчанию фотографии скачиваются с последнего запуска.
+
+### - fetch_nasa_apod_images
+
+Для запуска скрипта наберите команду:
+```Python
+python actions_with_API/fetch_nasa_apod_images.py
+```
+
+### - fetch_nasa_epic_images
+
+Для запуска скрипта наберите команду:
+```Python
+python actions_with_API/fetch_nasa_epic_images.py
+```
 
 ### - publich_image_to_telegram
 
