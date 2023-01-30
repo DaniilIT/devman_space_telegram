@@ -14,7 +14,9 @@ def publich_image_to_telegram(image, token):
         image = random.choice(os.listdir('./images'))
 
     bot = telegram.Bot(token=token)
-    bot.send_document(chat_id=CHANNEL_ID, document=open(f'./images/{image}', 'rb'))
+
+    with open(f'./images/{image}', 'rb') as document:
+        bot.send_document(chat_id=CHANNEL_ID, document=document)
 
 
 def create_parser():
