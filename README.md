@@ -28,11 +28,12 @@
 
 Чтобы использовать BotFather, вам тоже потребуется токен доступа, получите его [здесь](https://telegram.me/BotFather).
 
-Вставьте токены в файл .env, выполнив команды:
+Вставьте токены и id telegram - канала вида `@channel`, в файл .env, выполнив команды:
 
 ```
 echo "NASA_TOKEN=<your nasa token>" >> .env
 echo "TELEGRAM_TOKEN=<your botfather token>" >> .env
+echo "CHANNEL_ID=<your channel id>" >> .env
 ```
 
 Для этого проекта требуются следующие пакеты Python:
