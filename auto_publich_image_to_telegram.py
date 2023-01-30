@@ -3,7 +3,21 @@ import os
 import random
 import time
 
+from dotenv import dotenv_values
+
 from publich_image_to_telegram import publich_image_to_telegram
+
+
+def auto_publich_image_to_telegram(publish_delay, token):
+    publish_delay *= 3600
+
+    while True:
+        images = os.listdir('./images')
+        random.shuffle(images)
+
+        for image in images:
+            publich_image_to_telegram(image, token)
+            time.sleep(publish_delay)
 
 
 def create_parser():
@@ -21,18 +35,8 @@ def create_parser():
     return parser
 
 
-def auto_publich_image_to_telegram():
-    args = create_parser().parse_args()
-    publish_delay = args.publish_delay * 3600
-
-    while True:
-        images = os.listdir('./images')
-        random.shuffle(images)
-
-        for image in images:
-            publich_image_to_telegram(image)
-            time.sleep(publish_delay)
-
-
 if __name__ == '__main__':
-    auto_publich_image_to_telegram()
+    args = create_parser().parse_args()
+    telegram_token = dotenv_values('.env')['TELEGRAM_TOKEN']
+
+    auto_publich_image_to_telegram(args.publish_delay, telegram_token)

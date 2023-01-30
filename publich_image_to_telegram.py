@@ -9,10 +9,11 @@ from dotenv import dotenv_values
 CHANNEL_ID = '@MyKosmos_DaniilIt'
 
 
-def publich_image_to_telegram(image):
-    telegram_token = dotenv_values('.env')['TELEGRAM_TOKEN']
-    bot = telegram.Bot(token=telegram_token)
+def publich_image_to_telegram(image, token):
+    if not image:
+        image = random.choice(os.listdir('./images'))
 
+    bot = telegram.Bot(token=token)
     bot.send_document(chat_id=CHANNEL_ID, document=open(f'./images/{image}', 'rb'))
 
 
@@ -31,7 +32,6 @@ def create_parser():
 
 if __name__ == '__main__':
     args = create_parser().parse_args()
-    if not args.image:
-        args.image = random.choice(os.listdir('./images'))
+    telegram_token = dotenv_values('.env')['TELEGRAM_TOKEN']
 
-    publich_image_to_telegram(args.image)
+    publich_image_to_telegram(args.image, telegram_token)
