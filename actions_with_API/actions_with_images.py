@@ -13,10 +13,10 @@ def download_image(url, image_name, token=None):
     response = requests.get(url, params=payload)
     response.raise_for_status()
 
-    image_path = "./images"
+    image_path = './images'
     Path(image_path).mkdir(exist_ok=True)
 
-    with open(f"{image_path}/{image_name}", 'wb') as f:
+    with open(f'{image_path}/{image_name}', 'wb') as f:
         f.write(response.content)
 
 

@@ -10,11 +10,11 @@ def create_parser():
     """Функция производит синтаксический анализ командной строки
     """
     parser = argparse.ArgumentParser(
-        description="Программа автоматически публикует фотографии в канал телеграма."
+        description='Программа автоматически публикует фотографии в канал телеграма.'
     )
     parser.add_argument(
         '--publish_delay',
-        help="Задержка в часах между публикациями.",
+        help='Задержка в часах между публикациями.',
         default=4,
         type=int,
     )
@@ -26,7 +26,7 @@ def auto_publich_image_to_telegram():
     publish_delay = args.publish_delay * 3600
 
     while True:
-        images = os.listdir("./images")
+        images = os.listdir('./images')
         random.shuffle(images)
 
         for image in images:
